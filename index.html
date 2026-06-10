@@ -20,7 +20,10 @@
                 <option value="section4">301〜400番</option>
                 <option value="section5">401〜500番</option>
                 <option value="section6">501〜600番</option>
-                <option value="all">全範囲（1〜600番）</option>
+                <!-- 💡 新しく700番と800番のメニューを追加しました！ -->
+                <option value="section7">601〜700番</option>
+                <option value="section8">701〜800番</option>
+                <option value="all">全範囲（1〜800番）</option>
             </select>
         </div>
         <div class="select-container">
@@ -45,13 +48,14 @@
         }
         let s=[];
         if(n==="all"){
-            // 💡 どんな並び順になっていても確実に合体できるようにプログラムを修正しました！
             if(wordDataset.section1) s = s.concat(wordDataset.section1);
             if(wordDataset.section2) s = s.concat(wordDataset.section2);
             if(wordDataset.section3) s = s.concat(wordDataset.section3);
             if(wordDataset.section4) s = s.concat(wordDataset.section4);
             if(wordDataset.section5) s = s.concat(wordDataset.section5);
             if(wordDataset.section6) s = s.concat(wordDataset.section6);
+            if(wordDataset.section7) s = s.concat(wordDataset.section7);
+            if(wordDataset.section8) s = s.concat(wordDataset.section8);
         }else{
             s=wordDataset[n]||[]
         }
