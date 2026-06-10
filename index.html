@@ -22,10 +22,12 @@
                 <option value="section6">501〜600番</option>
                 <option value="section7">601〜700番</option>
                 <option value="section8">701〜800番</option>
-                <!-- 💡 900番と1000番のメニューを追加しました！ -->
                 <option value="section9">801〜900番</option>
                 <option value="section10">901〜1000番</option>
-                <option value="all">全範囲（1〜1000番）</option>
+                <!-- 💡 1100番と1200番のメニューを追加しました！ -->
+                <option value="section11">1001〜1100番</option>
+                <option value="section12">1101〜1200番</option>
+                <option value="all">全範囲（1〜1200番）</option>
             </select>
         </div>
         <div class="select-container">
@@ -60,6 +62,8 @@
             if(wordDataset.section8) s = s.concat(wordDataset.section8);
             if(wordDataset.section9) s = s.concat(wordDataset.section9);
             if(wordDataset.section10) s = s.concat(wordDataset.section10);
+            if(wordDataset.section11) s = s.concat(wordDataset.section11);
+            if(wordDataset.section12) s = s.concat(wordDataset.section12);
         }else{
             s=wordDataset[n]||[]
         }
