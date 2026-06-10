@@ -18,7 +18,6 @@
                 <option value="section2">101〜200番</option>
                 <option value="section3">201〜300番</option>
                 <option value="section4">301〜400番</option>
-                <!-- 💡 新しく500番と600番のメニューを増やしました！ -->
                 <option value="section5">401〜500番</option>
                 <option value="section6">501〜600番</option>
                 <option value="all">全範囲（1〜600番）</option>
@@ -38,7 +37,36 @@
 </div>
 <script src="words_data.js"></script>
 <script>
-    function generateQuiz(){const e=document.getElementById("section-select"),t=document.getElementById("count-select"),n=e.value,c=parseInt(t.value,10);if(typeof wordDataset=="undefined"){document.getElementById("quiz-list").innerHTML='<div style="text-align:center;color:#e74c3c;padding:20px;">データが見つかりません。</div>';return}let s=[];if(n==="all"){s=Object.values(wordDataset).flat()}else{s=wordDataset[n]||[]}const a=[...s].sort(()=>Math.random()-.5),o=a.slice(0,c),r=document.getElementById("quiz-list");r.innerHTML="",o.forEach((e,t)=>{const n=document.createElement("div");n.className="quiz-row",n.id=`row-${t}`,n.innerHTML=`<div class="question">${e.word}</div><div class="answers"><div class="answer-item"><span>意味：</span>${e.mean}</div></div><button class="toggle-btn" onclick="toggleAnswer(${t})">👁️</button>`,r.appendChild(n)})}function toggleAnswer(e){const t=document.getElementById(`row-${e}`);t.classList.toggle("show");const n=t.querySelector("button");n.textContent=t.classList.contains("show")?"✓":"👁️"}window.addEventListener("load",generateQuiz);
+    function generateQuiz(){
+        const e=document.getElementById("section-select"),t=document.getElementById("count-select"),n=e.value,c=parseInt(t.value,10);
+        if(typeof wordDataset=="undefined" || !wordDataset){
+            document.getElementById("quiz-list").innerHTML='<div style="text-align:center;color:#e74c3c;padding:20px;">データが見つかりません。</div>';
+            return
+        }
+        let s=[];
+        if(n==="all"){
+            // 💡 どんな並び順になっていても確実に合体できるようにプログラムを修正しました！
+            if(wordDataset.section1) s = s.concat(wordDataset.section1);
+            if(wordDataset.section2) s = s.concat(wordDataset.section2);
+            if(wordDataset.section3) s = s.concat(wordDataset.section3);
+            if(wordDataset.section4) s = s.concat(wordDataset.section4);
+            if(wordDataset.section5) s = s.concat(wordDataset.section5);
+            if(wordDataset.section6) s = s.concat(wordDataset.section6);
+        }else{
+            s=wordDataset[n]||[]
+        }
+        if(s.length===0){
+            document.getElementById("quiz-list").innerHTML='<div style="text-align:center;color:#e74c3c;padding:20px;">単語データが空っぽです。</div>';
+            return
+        }
+        const a=[...s].sort(()=>Math.random()-.5),o=a.slice(0,c),r=document.getElementById("quiz-list");
+        r.innerHTML="",o.forEach((e,t)=>{
+            const n=document.createElement("div");
+            n.className="quiz-row",n.id=`row-${t}`,n.innerHTML=`<div class="question">${e.word}</div><div class="answers"><div class="answer-item"><span>意味：</span>${e.mean}</div></div><button class="toggle-btn" onclick="toggleAnswer(${t})">👁️</button>`,r.appendChild(n)
+        })
+    }
+    function toggleAnswer(e){const t=document.getElementById(`row-${e}`);t.classList.toggle("show");const n=t.querySelector("button");n.textContent=t.classList.contains("show")?"✓":"👁️"}
+    window.addEventListener("load",generateQuiz);
 </script>
 </body>
 </html>
