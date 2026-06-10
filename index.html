@@ -39,7 +39,9 @@
             <select id="section-select" onchange="generateQuiz()">
                 <option value="section1">1〜100番</option>
                 <option value="section2">101〜200番</option>
-                <option value="all">全範囲（1〜200番）</option>
+                <!-- 💡 201〜300番の選択肢を新しく追加しました！ -->
+                <option value="section3">201〜300番</option>
+                <option value="all">全範囲（1〜300番）</option>
             </select>
         </div>
         <div class="select-container">
@@ -69,7 +71,7 @@
 
         let currentList = [];
         if (activeSection === 'all') {
-            currentList = [...wordDataset.section1, ...wordDataset.section2];
+            currentList = [...wordDataset.section1, ...wordDataset.section2, ...wordDataset.section3];
         } else {
             currentList = wordDataset[activeSection] || [];
         }
