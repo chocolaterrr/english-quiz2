@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ターゲット1900 英単語アプリ</title>
+    <title>ターゲット1900 英単語アプリ【完全版】</title>
     <style>body{font-family:'Helvetica Neue',Arial,sans-serif;background-color:#f5f7fa;margin:0;padding:15px;color:#333}.container{max-width:600px;margin:0 auto;background:#fff;padding:20px;border-radius:12px;box-shadow:0 4px 6px rgba(0,0,0,0.05)}h1{text-align:center;font-size:1.4rem;color:#2c3e50;margin-bottom:5px}.guide-box{background-color:#ebf5fb;border-left:4px solid #3498db;padding:12px;border-radius:4px;margin-bottom:15px;font-size:0.9rem;line-height:1.5;color:#2c3e50}.select-group{display:flex;gap:10px;margin-bottom:20px}.select-container{flex:1;background-color:#f8f9fa;padding:12px;border-radius:8px;border:1px solid #e1e8ed}.select-label{font-size:0.85rem;font-weight:bold;color:#7f8c8d;margin-bottom:5px;display:block}select{width:100%;padding:10px;font-size:0.95rem;border-radius:6px;border:1px solid #bdc3c7;background-color:#fff;cursor:pointer;box-sizing:border-box}.btn-refresh{display:block;width:100%;background:#3498db;color:#fff;border:none;padding:12px;font-size:1rem;font-weight:bold;border-radius:8px;cursor:pointer;text-align:center;margin-bottom:20px;transition:background 0.2s}.btn-refresh:active{background:#2980b9}.quiz-row{display:flex;align-items:center;background:#fff;border:1px solid #e1e8ed;border-radius:8px;margin-bottom:10px;padding:10px}.question{font-size:1.2rem;font-weight:bold;width:120px;flex-shrink:0;color:#2c3e50;word-break:break-all}.answers{flex-grow:1;display:flex;flex-direction:column;gap:4px;padding-left:10px;border-left:2px solid #e1e8ed}.answer-item{font-size:0.9rem;color:#7f8c8d;display:none}.answer-item span{color:#e74c3c;font-weight:bold}.quiz-row.show .answer-item{display:block}.toggle-btn{background:#fff;border:2px solid #bdc3c7;width:32px;height:32px;border-radius:6px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}.quiz-row.show .toggle-btn{border-color:#2ecc71;color:#2ecc71}</style>
 </head>
 <body>
 <div class="container">
-    <h1>📊 英単語テスト</h1>
+    <h1>📊 ターゲット1900 完全版アプリ</h1>
     <div class="guide-box">💡 <strong>遊び方</strong><br>英単語の意味を頭の中で思い浮かべてみよう！<br>右側の <strong>👁️ ボタンを押すと、正解がパッと表示</strong> されます。</div>
     <div class="select-group">
         <div class="select-container">
@@ -30,10 +30,11 @@
                 <option value="section14">1301〜1400番</option>
                 <option value="section15">1401〜1500番</option>
                 <option value="section16">1501〜1600番</option>
-                <!-- 💡 1700番と1800番のメニューを追加しました！ -->
                 <option value="section17">1601〜1700番</option>
                 <option value="section18">1701〜1800番</option>
-                <option value="all">全範囲（1〜1800番）</option>
+                <!-- 💡 ラスト！1900番のメニューと、全範囲ボタンを拡張しました！ -->
+                <option value="section19">1801〜1900番</option>
+                <option value="all">🌟 1〜1900番すべてから完全ランダム</option>
             </select>
         </div>
         <div class="select-container">
@@ -58,24 +59,8 @@
         }
         let s=[];
         if(n==="all"){
-            if(wordDataset.section1) s = s.concat(wordDataset.section1);
-            if(wordDataset.section2) s = s.concat(wordDataset.section2);
-            if(wordDataset.section3) s = s.concat(wordDataset.section3);
-            if(wordDataset.section4) s = s.concat(wordDataset.section4);
-            if(wordDataset.section5) s = s.concat(wordDataset.section5);
-            if(wordDataset.section6) s = s.concat(wordDataset.section6);
-            if(wordDataset.section7) s = s.concat(wordDataset.section7);
-            if(wordDataset.section8) s = s.concat(wordDataset.section8);
-            if(wordDataset.section9) s = s.concat(wordDataset.section9);
-            if(wordDataset.section10) s = s.concat(wordDataset.section10);
-            if(wordDataset.section11) s = s.concat(wordDataset.section11);
-            if(wordDataset.section12) s = s.concat(wordDataset.section12);
-            if(wordDataset.section13) s = s.concat(wordDataset.section13);
-            if(wordDataset.section14) s = s.concat(wordDataset.section14);
-            if(wordDataset.section15) s = s.concat(wordDataset.section15);
-            if(wordDataset.section16) s = s.concat(wordDataset.section16);
-            if(wordDataset.section17) s = s.concat(wordDataset.section17);
-            if(wordDataset.section18) s = s.concat(wordDataset.section18);
+            // 💡 1900語すべてを一瞬でドッキングさせて完全ランダムにする魔法のコードです
+            s = s.concat(wordDataset.section1 || [], wordDataset.section2 || [], wordDataset.section3 || [], wordDataset.section4 || [], wordDataset.section5 || [], wordDataset.section6 || [], wordDataset.section7 || [], wordDataset.section8 || [], wordDataset.section9 || [], wordDataset.section10 || [], wordDataset.section11 || [], wordDataset.section12 || [], wordDataset.section13 || [], wordDataset.section14 || [], wordDataset.section15 || [], wordDataset.section16 || [], wordDataset.section17 || [], wordDataset.section18 || [], wordDataset.section19 || []);
         }else{
             s=wordDataset[n]||[]
         }
